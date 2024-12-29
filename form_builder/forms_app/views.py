@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Question,Form,Responses,ResponseAnswer,Choices
-from .serializers import QuestionSerializer,FormSerializer
+from .serializers import QuestionSerializer,FormSerializer,ResponseAnswerSerializers,ResponsesSerializer
 from django.db import transaction
 # Create your views here.
 
@@ -29,6 +29,21 @@ class FormAPI(APIView):
             "data" : serializer.data
         })
         
+  
+  
+  
+  
+class FormResponseAPI(APIView):
+    def get(self,request,pk):
+        queryset = Responses.objects.filter(form__code = pk)
+        serializer = ResponsesSerializer(queryset,many = True)
+        return Response({
+            "status" : True,
+            "message" : "Form fetched successfully",
+            "data" : serializer.data
+        })  
+  
+  
         
         
         

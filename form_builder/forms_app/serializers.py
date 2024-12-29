@@ -1,5 +1,9 @@
 from rest_framework import serializers
-from .models import Question,Form
+from .models import Question,Form,Responses,Choices,ResponseAnswer
+
+
+
+
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,4 +40,40 @@ class FormSerializer(serializers.ModelSerializer):
                 "questions" : questions,
             }
             
+        return data
+  
+
+class ResponseAnswerSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = ResponseAnswer
+        fields = '__all__'
+        
+        def to_representation(self,instance):
+            data = {
+                "answer" : instance.answer,
+                "answer_to" : {
+                    "question" : instance.answer_to.question,
+                    "question_type" : instance.answer_to.question,
+                }
+            }
+            return data
+            
+    
+class ResponsesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Responses
+        exclude = ["createdAt","updatedAt","creator","id"]
+    
+    def to_representation(self, instance):
+        data = {
+            "id" : instance.id,
+            "code" : instance.code,
+            "responder_email" : instance.responder_email,
+            "form" : {
+              "code" : instance.form.code,
+              "title" : instance.form.title ,
+            },
+            "responses" : ResponseAnswerSerializers(instance.responses.all(),many = True).data
+            
+        }
         return data
