@@ -22,6 +22,7 @@ class FormSerializer(serializers.ModelSerializer):
                 for choice in question.choices.all():
                     choices.append({"id" : choice.id, "choice" : choice.choice})
             questions.append({
+                "question_id" : question.id,
                 "question" : question.question,
                 "question_type"  :question.question_type,
                 "required": question.required,
