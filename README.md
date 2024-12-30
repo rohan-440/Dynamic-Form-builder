@@ -27,6 +27,11 @@ Ensure the following tools are installed on your system:
 
 Follow these steps to set up the project locally:
 
-### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-username/dynamic-form-builder.git
+git clone https://github.com/rohan-440/Dynamic-Form-builder.git
+cd form_builder
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
+
