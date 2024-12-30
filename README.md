@@ -17,15 +17,12 @@
 
 Ensure the following tools are installed on your system:
 
-<<<<<<< HEAD
-
 - Python 3.8+
 - `pip` (Python package manager)
 - # Git
 - Python 3.8+
 - `pip` (Python package manager)
 - Git
-  > > > > > > > 917fbd06c757a0998a2f1aa44c2665e51c81cd07
 
 ---
 
@@ -41,19 +38,14 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-<<<<<<< HEAD
-
 ## Screenshots
 
-![Screenshot]
 1.Prepare Questions
-(Screenshots/questions.png)
+![Screenshot](Screenshots/questions.png)
 2.Prepare Form
-(Screenshots/form%20fetch.png)
+![Screenshot](Screenshots/form%20fetch.png)
 3.Give Your Response
-(Screenshots/store_response.png)
+![Screenshot](Screenshots/store_response.png)
 4.See Your Response
-(Screenshots/response_fetch.png)
+![Screenshot](Screenshots/response_fetch.png)
 =======
-
-> > > > > > > 917fbd06c757a0998a2f1aa44c2665e51c81cd07
