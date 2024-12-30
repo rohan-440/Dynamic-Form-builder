@@ -7,7 +7,7 @@ from django.db import transaction
 # Create your views here.
 
 
-
+#Question API GET method
 class QuestionAPI(APIView):
     def get(self,request):
         queryset = Question.objects.all()
@@ -18,7 +18,7 @@ class QuestionAPI(APIView):
             "data" : serializer.data
         })
         
-        
+#Form API GET method        
 class FormAPI(APIView):
     def get(self,request,pk):
         queryset = Form.objects.get(code=pk)
@@ -32,7 +32,7 @@ class FormAPI(APIView):
   
   
   
-  
+# Response API GET Method 
 class FormResponseAPI(APIView):
     def get(self,request,pk):
         queryset = Responses.objects.filter(form__code = pk)
@@ -46,7 +46,7 @@ class FormResponseAPI(APIView):
   
         
         
-        
+#Response storing API POST Method        
 class StoreResponseAPI(APIView):
     def post(self,request):
         data = request.data

@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from .utils import generate_random_code
 
 
-# Create your models here.
+
+#base model for time 
 class BaseModel(models.Model):
     createdAt = models.DateField(auto_now_add=True)
     updatedAt = models.DateField(auto_now=True)
@@ -13,7 +14,7 @@ class BaseModel(models.Model):
         abstract = True
         
         
-        
+# choice model like text,drop down,check box    
 class Choices(BaseModel):
     choice = models.CharField(max_length=200)
     def __str__(self):
@@ -21,7 +22,7 @@ class Choices(BaseModel):
     
     
     
-    
+#Question model
 class Question(BaseModel):
     question = models.CharField(max_length=200)
     question_type = models.CharField(max_length=200,choices=QUESTION_CHOICES)
@@ -32,7 +33,7 @@ class Question(BaseModel):
 
 
 
-
+#Form model
 class Form(BaseModel):
     code = models.CharField(max_length=200,unique=True,blank=True)
     title = models.CharField(max_length=200)
@@ -43,7 +44,7 @@ class Form(BaseModel):
     
     def save(self,*args,**kwargs):
         if not self.pk:
-           self.code = generate_random_code(9).lower()
+           self.code = generate_random_code(9).lower()  #get random code 
         super(Form,self).save(*args,**kwargs)
     
 
@@ -56,7 +57,7 @@ class ResponseAnswer(BaseModel):
         return self.answer
 
 
-
+#Response form
 class Responses(BaseModel):
     code  = models.CharField(max_length=200,unique=True,blank=True)
     form = models.ForeignKey(Form,on_delete=models.CASCADE,related_name="forms")
@@ -64,7 +65,7 @@ class Responses(BaseModel):
     responses = models.ManyToManyField(ResponseAnswer)
     def save(self,*args,**kwargs):
         if not self.pk:
-            self.code = generate_random_code(9).lower()
+            self.code = generate_random_code(9).lower() #save the response on that particular code 
         super(Responses,self).save(*args,**kwargs)
     # def __str__(self):
     #     return self.responses   

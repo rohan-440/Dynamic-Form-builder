@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (Choices,Question,Form,ResponseAnswer,Responses)
 
-# Register your models here.
+# Register the models
 
 admin.site.register(Choices)
 admin.site.register(Question)

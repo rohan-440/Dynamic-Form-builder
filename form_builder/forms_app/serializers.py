@@ -3,14 +3,14 @@ from .models import Question,Form,Responses,Choices,ResponseAnswer
 
 
 
-
+#Questions set serializer
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         exclude = ["createdAt","updatedAt"]
 
-
+#Form serializer
 class FormSerializer(serializers.ModelSerializer):
     class Meta:
         model = Form
@@ -42,7 +42,7 @@ class FormSerializer(serializers.ModelSerializer):
             
         return data
   
-
+#Response Serializer
 class ResponseAnswerSerializers(serializers.ModelSerializer):
     class Meta:
         model = ResponseAnswer
